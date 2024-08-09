@@ -4,7 +4,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 # Useful oh-my-zsh plugins for Le Wagon bootcamps
-plugins=(git gitfast last-working-dir common-aliases zsh-syntax-highlighting history-substring-search)
+plugins=(git gitfast last-working-dir common-aliases zsh-syntax-highlighting history-substring-search ssh-agent)
 
 # (macOS-only) Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/docs/Analytics.md
 export HOMEBREW_NO_ANALYTICS=1
@@ -70,3 +70,18 @@ export EDITOR=code
 
 # Set ipdb as the default Python debugger
 export PYTHONBREAKPOINT=ipdb.set_trace
+
+omm() {
+    docker compose exec -it rails sh -c "$*"
+}
+romm() {
+    docker compose exec -it rails sh -c "rails $*"
+}
+domm() {
+    docker exec -it oval-menu-management-rails-1 bash
+}
+alias ownership='sudo chown -R $USER:$USER .' # run it if you see a permission denied error
+alias app-init='sh init.sh' # run to create the enviroment
+alias app-start='sh start.sh' #  run every time you want to start the app.
+                              # It will run migrations and gem or package instalations
+alias dup='docker compose up'
